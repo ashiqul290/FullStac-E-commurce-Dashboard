@@ -1,17 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { Outlet } from "react-router";
 import SideBar from "./SideBar";
 import { Header } from "./Header";
+import { HiMiniBars3CenterLeft } from "react-icons/hi2";
 
 const Rootlayout = () => {
+  let [show , setShow] = useState(true)
   return (
     <>
       <div className="relative bg-[#f7f6f9] h-full min-h-screen">
         <div className="flex items-start">
-          <SideBar />
+          {
+           show?  <SideBar /> : ""
+          }
 
           <section className="main-content w-full">
-          <Header />
+       <div className=" bg-white flex items-center px-2">
+        <button onClick={()=>setShow(!show)} className=" cursor-pointer">
+          <HiMiniBars3CenterLeft className=" text-4xl" />
+        </button>
+         <div className="w-full">
+            <Header />
+         </div>
+       </div>
             <div className="my-6 px-2">
               <Outlet />
             </div>

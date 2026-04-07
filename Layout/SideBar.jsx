@@ -5,6 +5,7 @@ import { FaBuildingUser } from 'react-icons/fa6'
 import { TbCategoryPlus } from 'react-icons/tb'
 import { Link } from 'react-router'
 import allcategoryicon from '../public/menu.png'
+import { IoIosArrowDown } from 'react-icons/io'
 const SideBar = () => {
   return (
     <>
@@ -190,6 +191,74 @@ const SideBar = () => {
               <FaBuildingUser className=' text-xl' />
                 <span className="overflow-hidden text-ellipsis whitespace-nowrap">
                  All Marchent
+                </span>
+              
+              </Link>
+            </li>
+          </ul>
+          </div>
+          <div className="">
+            <div className="flex items-center rounded-[10px] duration-500 justify-between hover:bg-gray-200">
+               <h6 className="text-black  py-2  text-[20px] font-bold px-3">
+              Order List 
+            </h6>
+            <IoIosArrowDown className=' text-2xl' />
+            </div>
+                
+            <ul className="space-y-0">
+           
+            <li>
+              <Link
+                to={'/all-users'}
+                className="text-slate-800 text-[15px] font-medium flex gap-2 items-center cursor-pointer hover:bg-gray-100 rounded-md px-3 py-2 transition-all duration-300"
+              >
+                <span className="overflow-hidden text-ellipsis whitespace-nowrap">
+                  All orders
+                </span>
+                
+              </Link>
+           
+            </li>
+            <li>
+              <Link
+               to={'/all-marchent'}
+                className="text-slate-800 text-[15px] font-medium flex items-center cursor-pointer hover:bg-gray-100 gap-2 rounded-md px-3 py-2 transition-all duration-300"
+              >
+                <span className="overflow-hidden text-ellipsis whitespace-nowrap">
+                New orders
+                </span>
+              
+              </Link>
+            </li>
+            <li>
+              <Link
+               to={'/all-marchent'}
+                className="text-slate-800 text-[15px] font-medium flex items-center cursor-pointer hover:bg-gray-100 gap-2 rounded-md px-3 py-2 transition-all duration-300"
+              >
+                <span className="overflow-hidden text-ellipsis whitespace-nowrap">
+                Pending orders
+                </span>
+              
+              </Link>
+            </li>
+            <li>
+              <Link
+               to={'/all-marchent'}
+                className="text-slate-800 text-[15px] font-medium flex items-center cursor-pointer hover:bg-gray-100 gap-2 rounded-md px-3 py-2 transition-all duration-300"
+              >
+                <span className="overflow-hidden text-ellipsis whitespace-nowrap">
+                Cencel orders
+                </span>
+              
+              </Link>
+            </li>
+            <li>
+              <Link
+               to={'/all-marchent'}
+                className="text-slate-800 text-[15px] font-medium flex items-center cursor-pointer hover:bg-gray-100 gap-2 rounded-md px-3 py-2 transition-all duration-300"
+              >
+                <span className="overflow-hidden text-ellipsis whitespace-nowrap">
+                Aprov orders
                 </span>
               
               </Link>

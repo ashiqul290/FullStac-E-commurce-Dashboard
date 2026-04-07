@@ -26,7 +26,6 @@ export const App = () => {
       { path: "all-users", Component: AllUser },
       { path: "all-marchent", Component: AllMarchent },
       { path: "add-banner", Component: Banner },
-
     ],
   },
   {

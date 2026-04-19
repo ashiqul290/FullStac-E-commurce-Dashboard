@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router';
 
 export const AllProduct = () => {
+    const [search, setSearch] = useState("");
+  const [isFocused, setIsFocused] = useState(false);
   const dummyProducts = [
   {
     _id: "1",
@@ -31,11 +33,63 @@ export const AllProduct = () => {
       "https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?w=500",
   },
 ];
+
+
+  const filteredProducts = dummyProducts.filter((product) =>
+    product.title.toLowerCase().includes(search.toLowerCase())
+  );
   return (
     <>
     
     {/* Table */}
       <div className="bg-white rounded-xl shadow overflow-x-auto">
+          {/* Header */}
+      <div className="flex px-4 relative mt-2 justify-between items-center mb-6">
+        <h1 className="text-2xl font-bold">All Users</h1>
+
+        {/* Search Box */}
+      <input
+  type="text"
+  placeholder="Search product title..."
+  value={search}
+  onChange={(e) => setSearch(e.target.value)}
+  onFocus={() => setIsFocused(true)}
+  onBlur={() => setTimeout(() => setIsFocused(false), 150)}
+  className="border border-gray-400 px-3 py-2 rounded-lg w-64 focus:outline-none focus:ring-2 focus:border-none focus:ring-blue-400"
+/>
+     
+         {isFocused && (
+  <tbody className=' absolute top-full border border-gray-100 left-0 bg-white w-full shadow-lg rounded-b-lg z-10'>
+    {filteredProducts.length > 0 ? (
+      filteredProducts.map((product) => (
+        <tr key={product._id} className="border-t hover:bg-gray-50">
+          <td className="p-4 font-medium">{product.title}</td>
+          <td className="p-4 text-gray-600">{product.price}</td>
+
+          <td className="p-4">
+            <span className="px-3 py-1 text-xs bg-green-100 text-green-600 rounded-full">
+              Active
+            </span>
+          </td>
+
+          <td className="p-4">
+            <button className="px-3 py-1 bg-red-500 text-white rounded text-sm">
+              Delete
+            </button>
+          </td>
+        </tr>
+      ))
+    ) : (
+      <tr>
+        <td colSpan="4" className="text-center p-6 text-gray-500">
+          No user found
+        </td>
+      </tr>
+    )}
+  </tbody>
+)}
+ </div>
+
         <table className="w-full">
           <thead className="bg-gray-100 text-left">
             <tr>

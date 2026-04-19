@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { CiGrid41 } from 'react-icons/ci'
 import { FaBabyCarriage, FaUsers } from 'react-icons/fa'
 import { FaBuildingUser } from 'react-icons/fa6'
@@ -7,6 +7,11 @@ import { Link } from 'react-router'
 import allcategoryicon from '../public/menu.png'
 import { IoIosArrowDown } from 'react-icons/io'
 const SideBar = () => {
+  let [showProduct, setshowProdut] = useState(false)
+  let [showCategory, setshowCategory] = useState(false)
+  let [showBanner, setshowBanner] = useState(false)
+  let [showMerchant, setshowMerchant] = useState(false)
+  let [showOrder, setshowOrder] = useState(false)
   return (
     <>
         <nav id="sidebar" className="lg:min-w-[250px] w-max max-lg:min-w-8">
@@ -36,10 +41,14 @@ const SideBar = () => {
           
           </ul>
           <div>
-             <h6 className="text-blue-600 mt-3 text-[20px] font-bold px-3">
-               Products
+             <div onClick={()=>setshowProdut(!showProduct)} className="flex items-center rounded-[10px] duration-500 justify-between hover:bg-gray-200">
+               <h6 className="text-black  py-2  text-[20px] font-bold px-3">
+                  Products List 
             </h6>
-                
+            <IoIosArrowDown className=' text-2xl' />
+            </div>
+                {
+                  showProduct && (
             <ul className="space-y-2">
            
             <li>
@@ -85,13 +94,18 @@ const SideBar = () => {
               
               </Link>
             </li>
-          </ul>
+          </ul> )  
+                }
           </div>
           <div className="">
-             <h6 className="text-blue-600 mt-3 text-[20px] font-bold px-3">
-              Category
+              <div onClick={()=>setshowCategory(!showCategory)} className="flex items-center rounded-[10px] duration-500 justify-between hover:bg-gray-200">
+               <h6 className="text-black  py-2  text-[20px] font-bold px-3">
+              Category List 
             </h6>
-                
+            <IoIosArrowDown className=' text-2xl' />
+            </div>
+                {
+                  showCategory && 
             <ul className="space-y-2">
            
             <li>
@@ -120,12 +134,17 @@ const SideBar = () => {
               </Link>
             </li>
           </ul>
+                }
           </div>
           <div className="">
-             <h6 className="text-blue-600 mt-3 text-[20px] font-bold px-3">
-              Banners
+            <div onClick={()=>setshowBanner(!showBanner)} className="flex items-center rounded-[10px] duration-500 justify-between hover:bg-gray-200">
+               <h6 className="text-black  py-2  text-[20px] font-bold px-3">
+              Banner
             </h6>
-                
+            <IoIosArrowDown className=' text-2xl' />
+            </div>
+               {
+                  showBanner &&
             <ul className="space-y-2">
            
             <li>
@@ -162,12 +181,17 @@ const SideBar = () => {
             </li>
            
           </ul>
+               } 
           </div>
           <div className="">
-             <h6 className="text-blue-600 mt-3 text-[20px] font-bold px-3">
-              Users
+             <div onClick={()=>setshowMerchant(!showMerchant)} className="flex items-center rounded-[10px] duration-500 justify-between hover:bg-gray-200">
+               <h6 className="text-black  py-2  text-[20px] font-bold px-3">
+              Users 
             </h6>
-                
+            <IoIosArrowDown className=' text-2xl' />
+            </div>
+                {
+                  showMerchant &&
             <ul className="space-y-2">
            
             <li>
@@ -196,15 +220,17 @@ const SideBar = () => {
               </Link>
             </li>
           </ul>
+                }
           </div>
           <div className="">
-            <div className="flex items-center rounded-[10px] duration-500 justify-between hover:bg-gray-200">
+            <div onClick={()=>setshowOrder(!showOrder)} className="flex items-center rounded-[10px] duration-500 justify-between hover:bg-gray-200">
                <h6 className="text-black  py-2  text-[20px] font-bold px-3">
               Order List 
             </h6>
             <IoIosArrowDown className=' text-2xl' />
             </div>
-                
+               {
+                  showOrder &&
             <ul className="space-y-0">
            
             <li>
@@ -264,6 +290,7 @@ const SideBar = () => {
               </Link>
             </li>
           </ul>
+               } 
           </div>
          
         </div>

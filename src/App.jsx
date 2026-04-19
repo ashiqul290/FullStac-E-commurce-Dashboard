@@ -11,6 +11,7 @@ import { AllUser } from "../page/AllUser";
 import { AllMarchent } from "../page/AllMarchent";
 import { Banner } from "../page/Banner";
 import AllBanner from "../page/AllBanner";
+import AllOrderList from "../page/AllOrders";
 
 export const App = () => {
 
@@ -28,6 +29,7 @@ export const App = () => {
       { path: "all-marchent", Component: AllMarchent },
       { path: "add-banner", Component: Banner },
       { path: "all-banners", Component: AllBanner },
+      { path: "all-orders", Component: AllOrderList },
     ],
   },
   {

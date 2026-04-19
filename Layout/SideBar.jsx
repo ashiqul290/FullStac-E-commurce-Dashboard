@@ -249,7 +249,7 @@ const SideBar = () => {
            
             <li>
               <Link
-                to={'/all-users'}
+                to={'/all-orders'}
                 className="text-slate-800 text-[15px] font-medium flex gap-2 items-center cursor-pointer hover:bg-gray-100 rounded-md px-3 py-2 transition-all duration-300"
               >
                 <span className="overflow-hidden text-ellipsis whitespace-nowrap">

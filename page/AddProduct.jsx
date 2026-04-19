@@ -120,7 +120,7 @@ export const AddProduct = () => {
           <div className=" relative border-2  hover:text-blue-600 duration-500 border-dashed rounded-xl h-40  flex-col items-center justify-center   text-gray-500">
             <input
               type="file"
-              className=" opacity-0 w-full rounded-xl h-40  flex-col items-center justify-center   text-gray-500"
+              className=" w-full rounded-xl h-40  flex-col items-center justify-center   text-gray-500"
             />
             <div className=" absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center pointer-events-none">
               <FiUpload className=" text-3xl" />
@@ -134,7 +134,7 @@ export const AddProduct = () => {
         {/* Buttons */}
         <div className="flex justify-center ">
        
-          <button className="px-6 py-2 font-bold bg-blue-600 text-white rounded-lg">
+          <button className=" cursor-pointer px-6 py-2 font-bold bg-blue-600 text-white rounded-lg">
             Publish Product
           </button>
         </div>

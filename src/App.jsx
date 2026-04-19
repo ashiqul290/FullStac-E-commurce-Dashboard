@@ -10,6 +10,7 @@ import { AllCategory } from "../page/AllCategory";
 import { AllUser } from "../page/AllUser";
 import { AllMarchent } from "../page/AllMarchent";
 import { Banner } from "../page/Banner";
+import AllBanner from "../page/AllBanner";
 
 export const App = () => {
 
@@ -26,6 +27,7 @@ export const App = () => {
       { path: "all-users", Component: AllUser },
       { path: "all-marchent", Component: AllMarchent },
       { path: "add-banner", Component: Banner },
+      { path: "all-banners", Component: AllBanner },
     ],
   },
   {

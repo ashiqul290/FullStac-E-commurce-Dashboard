@@ -4,7 +4,15 @@ import { FiUpload } from "react-icons/fi";
 
 export const AddProduct = () => {
   const [stock, setStock] = useState(1);
+  const [images, setImages] = useState([]);
 
+const handleFile = (e) => {
+  const files = Array.from(e.target.files);
+  setImages((prev) => [...prev, ...files]);
+};
+const removeImage = (index) => {
+  setImages((prev) => prev.filter((_, i) => i !== index));
+};
   return (
     <>
       <div className="p-6 bg-gray-100 min-h-screen">
@@ -113,23 +121,49 @@ export const AddProduct = () => {
           </div>
         </div>
 
-        {/* Product Images */}
-        <div className="bg-white rounded-xl shadow p-6 mb-6">
-          <h2 className="text-lg font-semibold mb-4">Products Images</h2>
+     <div className="bg-white rounded-xl shadow p-6 mb-6">
+  <h2 className="text-lg font-semibold mb-4">Product Images</h2>
 
-          <div className=" relative border-2  hover:text-blue-600 duration-500 border-dashed rounded-xl h-40  flex-col items-center justify-center   text-gray-500">
-            <input
-              type="file"
-              className=" w-full rounded-xl h-40  flex-col items-center justify-center   text-gray-500"
-            />
-            <div className=" absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center pointer-events-none">
-              <FiUpload className=" text-3xl" />
-              <p className=" text-md text-gray-700">
-                Click to upload or drag & drop
-              </p>
-            </div>
-          </div>
+  {/* Upload Box */}
+  <div className="relative border-2 border-dashed rounded-xl h-40 flex items-center justify-center text-gray-500 hover:text-blue-600 transition">
+    <input
+      type="file"
+      multiple
+      onChange={handleFile}
+      className="absolute w-full h-full opacity-0 cursor-pointer"
+    />
+
+    <div className="flex flex-col items-center pointer-events-none">
+      <FiUpload className="text-3xl mb-2" />
+      <p>Click or drag & drop images</p>
+    </div>
+  </div>
+
+  {/* Preview Grid */}
+  {images.length > 0 && (
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
+      {images.map((img, index) => (
+        <div
+          key={index}
+          className="relative group rounded-lg overflow-hidden shadow"
+        >
+          <img
+            src={URL.createObjectURL(img)}
+            className="w-full h-28 object-cover"
+          />
+
+          {/* Remove Button */}
+          <button
+            onClick={() => removeImage(index)}
+            className="absolute top-1 right-1 bg-red-500 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition"
+          >
+            ✕
+          </button>
         </div>
+      ))}
+    </div>
+  )}
+</div>
 
         {/* Buttons */}
         <div className="flex justify-center ">

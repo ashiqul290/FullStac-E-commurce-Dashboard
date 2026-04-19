@@ -179,6 +179,20 @@ const SideBar = () => {
               </Link>
            
             </li>
+            <li>
+              <Link
+                to={'/all-banners'}
+                className="text-slate-800 text-[15px] font-medium flex gap-2 items-center cursor-pointer hover:bg-gray-100 rounded-md px-3 py-2.5 transition-all duration-300"
+              >
+               
+              
+                <span className="overflow-hidden text-ellipsis whitespace-nowrap">
+                  All Banner
+                </span>
+                
+              </Link>
+           
+            </li>
            
           </ul>
                } 

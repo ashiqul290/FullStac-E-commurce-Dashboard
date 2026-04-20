@@ -261,7 +261,7 @@ const SideBar = () => {
             </li>
             <li>
               <Link
-               to={'/all-marchent'}
+               to={'/new-orders'}
                 className="text-slate-800 text-[15px] font-medium flex items-center cursor-pointer hover:bg-gray-100 gap-2 rounded-md px-3 py-2 transition-all duration-300"
               >
                 <span className="overflow-hidden text-ellipsis whitespace-nowrap">
@@ -272,7 +272,7 @@ const SideBar = () => {
             </li>
             <li>
               <Link
-               to={'/all-marchent'}
+               to={'/panding-orders'}
                 className="text-slate-800 text-[15px] font-medium flex items-center cursor-pointer hover:bg-gray-100 gap-2 rounded-md px-3 py-2 transition-all duration-300"
               >
                 <span className="overflow-hidden text-ellipsis whitespace-nowrap">

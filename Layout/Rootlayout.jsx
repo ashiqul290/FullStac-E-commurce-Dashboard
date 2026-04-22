@@ -20,7 +20,7 @@ const Rootlayout = () => {
         <button onClick={()=>setShow(!show)} className=" cursor-pointer">
           <HiMiniBars3CenterLeft className=" text-4xl" />
         </button>
-         <div className="w-full">
+         <div className="w-full ">
             <Header />
          </div>
        </div>

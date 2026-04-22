@@ -1,4 +1,5 @@
-import React from "react";
+import axios, { all } from "axios";
+import React, { use, useEffect, useState } from "react";
 
 const dummyBanners = [
   {
@@ -19,6 +20,18 @@ const dummyBanners = [
 ];
 
 export default function AllBanner() {
+  let [allBanner,setAllBanner] = useState([])
+  useEffect(() => {
+    axios.get(`http://localhost:5100/api/v1/api/banner/all-banners`, {
+      withCredentials: true,
+    }).then((res) => {
+      setAllBanner(res.data.data)
+    }).catch((err) => {
+      console.error(err);
+    })
+  }, []);
+ 
+
   return (
     <div className="p-6 bg-gray-50 min-h-screen">
 
@@ -34,7 +47,7 @@ export default function AllBanner() {
       {/* Banner Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-        {dummyBanners.map((banner) => (
+        {allBanner.map((banner) => (
           <div
             key={banner._id}
             className="bg-white rounded-xl shadow overflow-hidden hover:shadow-lg transition"

@@ -1,7 +1,10 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { useNavigate } from "react-router";
 
 export const Login = () => {
+  let navigate = useNavigate();
+
   let [fromData, setFromData] = useState({
     email: "",
     password: "",
@@ -17,7 +20,7 @@ export const Login = () => {
   };
   let handleSubmit = (e) => {
    axios.post("http://localhost:5100/api/v1/api/auth/login", fromData,{withCredentials: true}).then((res) => {
-    console.log(res.data);
+   navigate("/");
    }).catch((err) => {
     console.log(err);
    })

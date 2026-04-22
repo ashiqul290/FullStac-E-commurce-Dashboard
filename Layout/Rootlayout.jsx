@@ -3,11 +3,12 @@ import { Outlet } from "react-router";
 import SideBar from "./SideBar";
 import { Header } from "./Header";
 import { HiMiniBars3CenterLeft } from "react-icons/hi2";
+import PrivateRoute from "../private/PrivateRoute";
 
 const Rootlayout = () => {
   let [show , setShow] = useState(true)
   return (
-    <>
+    <PrivateRoute>
       <div className="relative bg-[#f7f6f9] h-full min-h-screen">
         <div className="flex items-start">
           {
@@ -29,7 +30,7 @@ const Rootlayout = () => {
           </section>
         </div>
       </div>
-    </>
+    </PrivateRoute>
   );
 };
 

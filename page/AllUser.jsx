@@ -1,16 +1,30 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 export const AllUser = () => {
   const [search, setSearch] = useState("");
 
   const dummyUsers = [
-    { _id: "1", name: "Rahim", email: "rahim@gmail.com" },
-    { _id: "2", name: "Karim", email: "karim@gmail.com" },
-    { _id: "3", name: "Sakib", email: "sakib@gmail.com" },
-    { _id: "4", name: "Jubayer", email: "jubayer@gmail.com" },
+    { _id: "1", name: "Rahim", role: "user", email: "rahim@gmail.com" },
+    { _id: "2", name: "Karim", role: "user", email: "karim@gmail.com" },
+    { _id: "3", name: "Sakib", role: "user", email: "sakib@gmail.com" },
+    { _id: "4", name: "Jubayer", role: "user", email: "jubayer@gmail.com" },
   ];
 
-  const filteredUsers = dummyUsers.filter((user) =>
+  let [allUsers,setAllUsers] = useState([])
+    useEffect(() => {
+      axios.get(`http://localhost:5100/api/v1/api/auth/allusers`, {
+        withCredentials: true,
+      }).then((res) => {
+        setAllUsers(res.data.data)
+      }).catch((err) => {
+        console.error(err);
+      })
+    }, []);
+    let users = allUsers.filter((u) => u.role === "user");
+   
+
+  const filteredUsers = users.filter((user) =>
     user.name.toLowerCase().includes(search.toLowerCase())
   );
 
@@ -39,7 +53,7 @@ export const AllUser = () => {
             <tr>
               <th className="p-4">Name</th>
               <th className="p-4">Email</th>
-              <th className="p-4">Status</th>
+              <th className="p-4">Role</th>
               <th className="p-4">Action</th>
             </tr>
           </thead>
@@ -51,18 +65,19 @@ export const AllUser = () => {
 
                   <td className="p-4 font-medium">{user.name}</td>
                   <td className="p-4 text-gray-600">{user.email}</td>
+                  <td className="p-4">  <span className="px-3 py-1 text-xs bg-green-100 text-green-600 rounded-full">
+                    {user.role}
+                  </span></td>
 
-                  <td className="p-4">
-                    <span className="px-3 py-1 text-xs bg-green-100 text-green-600 rounded-full">
-                      Active
-                    </span>
-                  </td>
 
-                  <td className="p-4">
-                    <button className="px-3 py-1 bg-red-500 text-white rounded text-sm">
-                      Delete
-                    </button>
-                  </td>
+                   <td className="p-4 flex gap-2">
+                  <button className="px-3 py-1 bg-blue-500 text-white rounded">
+                    View
+                  </button>
+                  <button className="px-3 py-1 bg-red-500 text-white rounded">
+                    Delete
+                  </button>
+                </td>
 
                 </tr>
               ))

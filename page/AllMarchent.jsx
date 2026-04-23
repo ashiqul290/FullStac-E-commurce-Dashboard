@@ -4,10 +4,10 @@ export const AllMarchent = () => {
     const [search, setSearch] = useState("");
 
   const dummyMerchants = [
-    { _id: "1", name: "Rahim Store", email: "rahim@store.com", status: "Active" },
-    { _id: "2", name: "Karim Fashion", email: "karim@shop.com", status: "Pending" },
-    { _id: "3", name: "Sakib Electronics", email: "sakib@tech.com", status: "Active" },
-    { _id: "4", name: "Jubayer Mart", email: "jubayer@mart.com", status: "Blocked" },
+    { _id: "1", name: "Rahim Store", email: "rahim@store.com", role: "marchent" },
+    { _id: "2", name: "Karim Fashion", email: "karim@shop.com", role: "marchent" },
+    { _id: "3", name: "Sakib Electronics", email: "sakib@tech.com", role: "marchent" },
+    { _id: "4", name: "Jubayer Mart", email: "jubayer@mart.com", role: "marchent" },
   ];
 
   const filteredMerchants = dummyMerchants.filter((m) =>
@@ -50,7 +50,7 @@ export const AllMarchent = () => {
 
                 <td className="p-4">
                   <span className="px-3 py-1 text-xs bg-green-100 text-green-600 rounded-full">
-                    {m.status}
+                    {m.role}
                   </span>
                 </td>
 

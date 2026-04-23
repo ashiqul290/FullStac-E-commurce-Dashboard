@@ -1,16 +1,28 @@
-import React, { useState } from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
 
 export const AllMarchent = () => {
     const [search, setSearch] = useState("");
 
-  const dummyMerchants = [
-    { _id: "1", name: "Rahim Store", email: "rahim@store.com", role: "marchent" },
-    { _id: "2", name: "Karim Fashion", email: "karim@shop.com", role: "marchent" },
-    { _id: "3", name: "Sakib Electronics", email: "sakib@tech.com", role: "marchent" },
-    { _id: "4", name: "Jubayer Mart", email: "jubayer@mart.com", role: "marchent" },
-  ];
-
-  const filteredMerchants = dummyMerchants.filter((m) =>
+  // const dummyMerchants = [
+  //   { _id: "1", name: "Rahim Store", email: "rahim@store.com", role: "marchent" },
+  //   { _id: "2", name: "Karim Fashion", email: "karim@shop.com", role: "marchent" },
+  //   { _id: "3", name: "Sakib Electronics", email: "sakib@tech.com", role: "marchent" },
+  //   { _id: "4", name: "Jubayer Mart", email: "jubayer@mart.com", role: "marchent" },
+  // ];
+  let [allUsers,setAllUsers] = useState([])
+    useEffect(() => {
+      axios.get(`http://localhost:5100/api/v1/api/auth/allusers`, {
+        withCredentials: true,
+      }).then((res) => {
+        setAllUsers(res.data.data)
+      }).catch((err) => {
+        console.error(err);
+      })
+    }, []);
+    let users = allUsers.filter((u) => u.role === "marchent");
+   
+  const filteredMerchants = users.filter((m) =>
     m.name.toLowerCase().includes(search.toLowerCase())
   );
 

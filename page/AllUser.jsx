@@ -4,12 +4,12 @@ import React, { useEffect, useState } from "react";
 export const AllUser = () => {
   const [search, setSearch] = useState("");
 
-  const dummyUsers = [
-    { _id: "1", name: "Rahim", role: "user", email: "rahim@gmail.com" },
-    { _id: "2", name: "Karim", role: "user", email: "karim@gmail.com" },
-    { _id: "3", name: "Sakib", role: "user", email: "sakib@gmail.com" },
-    { _id: "4", name: "Jubayer", role: "user", email: "jubayer@gmail.com" },
-  ];
+  // const dummyUsers = [
+  //   { _id: "1", name: "Rahim", role: "user", email: "rahim@gmail.com" },
+  //   { _id: "2", name: "Karim", role: "user", email: "karim@gmail.com" },
+  //   { _id: "3", name: "Sakib", role: "user", email: "sakib@gmail.com" },
+  //   { _id: "4", name: "Jubayer", role: "user", email: "jubayer@gmail.com" },
+  // ];
 
   let [allUsers,setAllUsers] = useState([])
     useEffect(() => {

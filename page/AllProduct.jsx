@@ -1,41 +1,52 @@
-import React, { useState } from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router';
 
 export const AllProduct = () => {
     const [search, setSearch] = useState("");
   const [isFocused, setIsFocused] = useState(false);
-  const dummyProducts = [
-  {
-    _id: "1",
-    title: "Nike Shoes",
-    price: 120,
-    discount: 20,
-    stock: 10,
-    image:
-      "https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?w=500",
-  },
-  {
-    _id: "2",
-    title: "Smart Watch",
-    price: 80,
-    discount: 15,
-    stock: 5,
-    image:
-      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500",
-  },
-  {
-    _id: "3",
-    title: "Headphones",
-    price: 100,
-    discount: 0,
-    stock: 0,
-    image:
-      "https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?w=500",
-  },
-];
+//   const dummyProducts = [
+//   {
+//     _id: "1",
+//     title: "Nike Shoes",
+//     price: 120,
+//     discount: 20,
+//     stock: 10,
+//     image:
+//       "https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?w=500",
+//   },
+//   {
+//     _id: "2",
+//     title: "Smart Watch",
+//     price: 80,
+//     discount: 15,
+//     stock: 5,
+//     image:
+//       "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500",
+//   },
+//   {
+//     _id: "3",
+//     title: "Headphones",
+//     price: 100,
+//     discount: 0,
+//     stock: 0,
+//     image:
+//       "https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?w=500",
+//   },
+// ];
 
-
-  const filteredProducts = dummyProducts.filter((product) =>
+   let [allProducts,setAllProducts] = useState([])
+     useEffect(() => {
+       axios.get(`http://localhost:5100/api/v1/api/product/all-product`, {
+         withCredentials: true,
+       }).then((res) => {
+         setAllProducts(res.data.data)
+       }).catch((err) => {
+         console.error(err);
+       })
+     }, []);
+    //  console.log(allProducts);
+  const filteredProducts = allProducts.filter((product) =>
     product.title.toLowerCase().includes(search.toLowerCase())
   );
   return (
@@ -97,13 +108,13 @@ export const AllProduct = () => {
               <th className="p-4">Title</th>
               <th className="p-4">Price</th>
               <th className="p-4">Stock</th>
-              <th className="p-4">Status</th>
+              {/* <th className="p-4">Status</th> */}
               <th className="p-4">Actions</th>
             </tr>
           </thead>
 
           <tbody>
-            {dummyProducts.map((item) => (
+            {allProducts.map((item) => (
               <tr
                 key={item._id}
                 className="border-t hover:bg-gray-50 transition"
@@ -128,12 +139,12 @@ export const AllProduct = () => {
                   </span>
                 </td>
 
-                {/* Status */}
+                {/* Status
                 <td className="p-4">
                   <span className="px-3 py-1 text-xs rounded-full bg-green-100 text-green-600">
                     Active
                   </span>
-                </td>
+                </td> */}
 
                 {/* Actions */}
                 <td className="py-4 flex justify-around gap-1">
@@ -156,7 +167,7 @@ export const AllProduct = () => {
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {dummyProducts.map((item) => (
+        {allProducts.map((item) => (
           <div
             key={item._id}
             className="bg-white rounded-xl shadow p-4 hover:shadow-lg transition"

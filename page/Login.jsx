@@ -31,7 +31,7 @@ export const Login = () => {
     <>
       <div className="bg-gray-50">
         <div className="min-h-screen flex flex-col items-center justify-center py-6 px-4">
-          <div className="max-w-[480px] w-full">
+          <div className="max-w-120 w-full">
             <div className="p-6 sm:p-8 rounded-2xl bg-white border border-gray-200 shadow-sm">
               <h1 className="text-slate-900 text-center text-3xl font-semibold">
                 Login
@@ -116,7 +116,7 @@ export const Login = () => {
                     </a>
                   </div>
                 </div>
-                <div className="!mt-12">
+                <div className="mt-12!">
                   <button
                     onClick={handleSubmit}
                     type="button"
@@ -125,7 +125,7 @@ export const Login = () => {
                     Sign in
                   </button>
                 </div>
-                <p className="text-slate-900 text-sm !mt-6 text-center">
+                <p className="text-slate-900 text-sm mt-6! text-center">
                   Don't have an account?{" "}
                   <a
                     href="javascript:void(0);"

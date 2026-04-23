@@ -1,10 +1,11 @@
+import axios from "axios";
 import { useState } from "react";
 import { FiUpload } from "react-icons/fi";
 
 const AddCategory = () => {
   const [form, setForm] = useState({
     name: "",
-    discount: "",
+    discount: null,
     subcategory: "",
     image: null,
   });
@@ -28,7 +29,36 @@ const AddCategory = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(form);
+    try {
+          const formData = new FormData();
+    
+          if (form.image) {
+            formData.append("image", form.image);
+          }
+    
+          if (form.name) {
+            formData.append("name", form.name);
+          }
+          if (form.discount) {
+            formData.append("discount", form.discount);
+          }
+          if (form.subcategory) {
+            formData.append("subcategory", form.subcategory);
+          }
+    
+          const res =  axios.post(
+            `http://localhost:5100/api/v1/api/category/add-category`,
+            formData,
+            {
+              withCredentials: true,
+            }
+          );
+    
+          alert("Category added successfully");
+        } catch (error) {
+          alert("Failed to add category");
+          console.error(error);
+        }
   };
 
   return (
@@ -58,6 +88,15 @@ const AddCategory = () => {
               className="border mt-2 w-full py-2 rounded px-2"
               placeholder="Enter Discount..."
             />
+          </div>
+          <div className="w-full">
+            <label className="font-medium ml-1">Sub Category</label>
+           <select name="subcategory" id="" onChange={handleChange} className="border mt-2 w-full py-2 rounded px-2">
+              <option value="">Select Sub Category</option>
+              <option value="Electronics">Electronics</option>
+              <option value="Clothing">Clothing</option>
+              <option value="Home & Kitchen">Home & Kitchen</option>
+            </select>
           </div>
         </div>
       </div>
